@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native'; //View is primitve element to position/wrap/style
 
-const random = (props) => {
+const Title = (props) => {
 	const { textStyle, viewStyle } = styles;
 
 	return (
 	<View style ={viewStyle}> 
-		<Text style ={textStyle}>Hey</Text>
+		<Text style ={textStyle}>What Should I Watch</Text>
 	</View>	
 	);
 };
@@ -31,4 +31,4 @@ const styles = {
 
 };
 
-export default random;
+export default Title;

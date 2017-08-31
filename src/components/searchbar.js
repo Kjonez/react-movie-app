@@ -19,7 +19,7 @@ class SearchBar extends Component {
   render(){
     return (
       <Text>
-        Hello
+      Search Bar Here
       </Text>
     )
   }
