@@ -1,21 +1,40 @@
-import React, {Component} from 'react';
-import { Text, TextInput, View } from 'react-native'; 
-import axios from 'axios';
+import React, { Component } from "react";
+import { Text, TextInput, View, WebView } from "react-native";
+import axios from "axios";
 
-const API_KEY = 'AIzaSyD3rHMO3f4zB_bOf0gEJ1_RWlBERxAUGqk';
+class Result extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: ""
+    };
+  }
 
-class Results extends Component {
+  componentWillMount () {
+    let title = "";
+    fetch(
+      `https://api.themoviedb.org/3/genre/${this.props
+        .query}/movies?api_key=b09e8ebef5593dfec03034ec1ab31d35&language=en-US&include_adult=false&sort_by=created_at.desc`
+    )
+      .then(resp => {
+        return resp.json();
+      })
+      .then(json => {
+        title = json.results[Math.floor(Math.random() * 20) + 1].title;
+        console.log(title);
+      });
+  }
 
-	render(){
-		return (
-			// axios.get('https://api.themoviedb.org/3/genre/28/movies?api_key=b09e8ebef5593dfec03034ec1ab31d35&language=en-US&include_adult=false&sort_by=created_at.desc').then(resp => {
-			// 	console.log(resp)
-			// })
-			axios.get('https://s-apis.learningfuze.com/hackathon/youtube/search.php').then(resp => {
-				console.log(resp)
-			})
-		);
-	}
-}	
+  render() {
+    let { titles } = titles;
+    console.log('render functions',  titles);
+    return (
+      <WebView
+        source={{ uri: "https://youtube.com/"}}
+        style={{ height: "100%" }}
+      />
+    );
+  }
+}
 
-export default Results;
+export default Result;
